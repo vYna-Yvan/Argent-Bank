@@ -1,0 +1,77 @@
+@import './root.css';
+
+.profil-main-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #12002b;
+    height: 87vh;
+}
+
+.title-edit {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 32px;
+    width: 100%;
+}
+
+.edit-button {
+    padding: 10px;
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+    color: #fff;
+    font-weight: bold;
+}
+
+.bank-accounts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.account {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    width: 80%;
+    height: 140px;
+    padding: 24px;
+    margin: auto 0;
+    margin-bottom: 32px;
+    text-align: left;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.account-details {
+    width: 80%;
+}
+
+.account-details p {
+    margin: 0;
+}
+
+.account-title {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.account-money {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.transaction-button {
+    width: 100%;
+    padding: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 16px;
+    background-color: var(--main-color);
+    border: var(--main-color);
+    color: #fff;
+}

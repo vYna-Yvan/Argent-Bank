@@ -1,0 +1,13 @@
+@import './root.css';
+
+footer {
+    border-top: 2px solid #ccc;
+    padding-top: 32px;
+    padding-bottom: 24px;
+}
+
+.footer-text {
+    color: var(--text-color);
+    margin: 0;
+    text-align: center;
+}

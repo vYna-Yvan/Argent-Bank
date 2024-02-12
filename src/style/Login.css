@@ -1,0 +1,62 @@
+@import './root.css';
+
+.main-container {
+    background-color: #12002b;
+    min-height: 87vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+}
+
+.log-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 48px;
+    padding: 32px;
+    background-color: #fff;
+}
+
+.log-form img {
+    height: 16px;
+    width: 16px;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    color: var(--text-color);
+    font-weight: bold;
+
+}
+
+.input-wrapper input {
+    height: 25px;
+    width: 236px;
+    padding: 5px;
+}
+
+.input-remenber {
+    margin: 4px;
+}
+
+
+
+.sing-in-button {
+    width: 100%;
+    height: 21px;
+    padding: 8px;
+    margin: 0;
+    margin-top: 1rem;
+    background-color: var(--main-color);
+    color: #ffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+
+}

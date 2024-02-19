@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../style/Profil.css";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../redux/actions/userActions";
+import Account from "../components/account/Account.js";
 
 const Profil = () => {
   const dispatch = useDispatch();
@@ -64,36 +65,24 @@ const Profil = () => {
         </button>
       </div>
       <div className="bank-accounts">
-        <div className="account">
-          <div className="account-details">
-            <h2 className="account-title">Argent Bank Checking x8349</h2>
-            <p className="account-money">$2,082.79</p>
-            <p>Available Balance</p>
-          </div>
-          <div className="transacBt-wrapper">
-            <button className="transaction-button">View transactions</button>
-          </div>
-        </div>
-        <div className="account">
-          <div className="account-details">
-            <h2 className="account-title">Argent Bank Savings x6712</h2>
-            <p className="account-money">$10,928.42</p>
-            <p>Available Balance</p>
-          </div>
-          <div className="transacBt-wrapper">
-            <button className="transaction-button">View transactions</button>
-          </div>
-        </div>
-        <div className="account">
-          <div className="account-details">
-            <h2 className="account-title">Argent Bank Credit Card x8349</h2>
-            <p className="account-money">$184.30</p>
-            <p>Current Balance</p>
-          </div>
-          <div className="transacBt-wrapper">
-            <button className="transaction-button">View transactions</button>
-          </div>
-        </div>
+        <Account
+          accountType="Checking"
+          accountNumber="(x3448)"
+          accountAmount="$48.098.43"
+          accountDescription="Available Balance"
+        />
+        <Account
+          accountType="Savings"
+          accountNumber="(x6712)"
+          accountAmount="$10,928.42"
+          accountDescription="Available Balance"
+        />
+        <Account
+          accountType="Credit"
+          accountNumber="(x8349)"
+          accountAmount="$184.30"
+          accountDescription="Current Balance"
+        />
       </div>
     </div>
   );

@@ -28,6 +28,10 @@
     align-items: center;
 }
 
+
+
+
+/*
 .account {
     display: flex;
     flex-direction: row;
@@ -75,7 +79,7 @@
     border: var(--main-color);
     color: #fff;
 }
-
+*/
 .showForm-box {
     display: flex;
     align-items: center;

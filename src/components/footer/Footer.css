@@ -1,4 +1,13 @@
-@import './root.css';
+* {
+
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    text-decoration: none;
+}
+
+:root {
+    --text-color: #2c3e50;
+    --main-color: #00bc77;
+}
 
 footer {
     border-top: 2px solid #ccc;

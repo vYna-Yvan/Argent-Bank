@@ -1,10 +1,10 @@
 import React from "react";
-import "../style/Header.css";
-import Logo from "../assets/img/argentBankLogo.png";
-import userIcon from "../assets/icon/circle-user-solid.svg";
+import "./Header.css";
+import Logo from "./argentBankLogo.png";
+import userIcon from "./circle-user-solid.svg";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import outIcon from "../assets/icon/right-from-bracket-solid.svg";
+import outIcon from "./right-from-bracket-solid.svg";
 
 const Header = () => {
   const { token, user } = useSelector((state) => state.userReducer);
@@ -18,7 +18,8 @@ const Header = () => {
         <div className="SignIn-box">
           <img alt="user" src={userIcon} />
 
-          <p>{token ? user.firstName + " Sign Out" : "Sign In"}</p>
+          <p>{token ? user.firstName : "Sign In"}</p>
+          <p>{token ? !"Sign Out" : ""}</p>
         </div>
       </Link>
     </header>

@@ -6,8 +6,8 @@ import {
   Navigate,
 } from "react-router-dom";
 import Home from "../pages/Home.js";
-import Header from "../components/Header.js";
-import Footer from "../components/Footer.js";
+import Header from "../components/header/Header.js";
+import Footer from "../components/footer/Footer.js";
 import Login from "../pages/Login.js";
 import Profil from "../pages/Profil.js";
 import { clearLoading, getProfile } from "../redux/actions/userActions.js";

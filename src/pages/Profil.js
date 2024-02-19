@@ -29,10 +29,12 @@ const Profil = () => {
           <br /> {user.firstName} {user.lastName}!
         </h1>
         {showForm && (
-          <div>
+          <div className="showForm-box">
             <form onSubmit={onUpdate}>
               <div className="input-wrapper">
-                <label htmlFor="firstName">Firstname</label>
+                <label className="names-label" htmlFor="firstName">
+                  Firstname
+                </label>
                 <input
                   type="text"
                   id="firstName"
@@ -41,7 +43,9 @@ const Profil = () => {
                 />
               </div>
               <div className="input-wrapper">
-                <label htmlFor="lastName">Lastname</label>
+                <label className="names-label" htmlFor="lastName">
+                  Lastname
+                </label>
                 <input
                   type="text"
                   id="lastName"
@@ -49,11 +53,7 @@ const Profil = () => {
                   onChange={(e) => setLastName(e.target.value)}
                 />
               </div>
-              <div className="input-remenber">
-                <input type="checkbox" id="remember-me" />
-                <label htmlFor="rememeber-me">Remenber me</label>
-              </div>
-              <button className="sing-in-button" type="submit">
+              <button className="update-button" type="submit">
                 Update
               </button>
             </form>

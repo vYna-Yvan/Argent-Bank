@@ -213,7 +213,7 @@ paths:
       description: Delete a transaction by its ID
       parameters:
         - in: header
-          name: Authorization
+          name: id
           description: Transaction ID
           required: true
       produces:

@@ -110,7 +110,7 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
-  /transactions:
+  /user/transactions:
     get:
       security:
         - Bearer: []
@@ -142,9 +142,10 @@ paths:
       summary: Add New Transaction
       description: Add a new transaction
       parameters:
-        - in: body
+        - in: header
           name: Authorization
           description: Transaction object to be added
+          type:
           required: true
       produces:
         - application/json
@@ -157,7 +158,7 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
-  /transactions/{id}:
+  /user/transactions/{id}:
     get:
       security:
         - Bearer: []
@@ -166,6 +167,10 @@ paths:
       summary: Get Transaction by ID
       description: Retrieve a transaction by its ID
       parameters:
+        - in: path
+          name: id
+          description: Transaction ID
+          required: true
         - in: header
           name: Authorization
           description: Attach Bearer JWT token
@@ -189,10 +194,20 @@ paths:
       summary: Update Transaction by ID
       description: Update a transaction by its ID
       parameters:
-        - in: header
+        - in: path
           name: id
           description: Transaction ID
           required: true
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+        - in: body
+          name: body
+          description: Update transaction attributes
+          required: true
+          schema:
+            $ref: "#/definitions/Transaction"
       produces:
         - application/json
       responses:
@@ -212,9 +227,13 @@ paths:
       summary: Delete Transaction by ID
       description: Delete a transaction by its ID
       parameters:
-        - in: header
+        - in: path
           name: id
           description: Transaction ID
+          required: true
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
           required: true
       produces:
         - application/json

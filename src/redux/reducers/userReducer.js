@@ -6,6 +6,7 @@ import {
   LOGIN_USER_FAILED,
   LOGIN_USER_REQUEST,
   LOGIN_USER_SUCCESS,
+  LOGOUT_USER,
 } from "../types/userTypes";
 
 const initialeState = {
@@ -60,6 +61,13 @@ const userReducer = (state = initialeState, action) => {
       return {
         ...state,
         userLoading: false,
+      };
+    case LOGOUT_USER:
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        token: null,
+        user: null,
       };
     default:
       return state;

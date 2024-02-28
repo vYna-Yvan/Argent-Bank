@@ -5,6 +5,7 @@ import {
   GET_PROFILE_SUCCESS,
   LOGIN_USER_FAILED,
   LOGIN_USER_REQUEST,
+  LOGOUT_USER,
   REGISTER_USER_FAILED,
   REGISTER_USER_REQUEST,
   REGISTER_USER_SUCCESS,
@@ -115,5 +116,11 @@ export const updateUser = (token, body, dispatch) => {
     } else {
       getProfile(token, dispatch);
     }
+  });
+};
+
+export const logOutUser = (dispatch) => {
+  dispatch({
+    type: LOGOUT_USER,
   });
 };

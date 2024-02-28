@@ -10,9 +10,11 @@ const Profil = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [userName, setUserName] = useState("");
   useEffect(() => {
     setFirstName(user.firstName);
     setLastName(user.lastName);
+    setUserName(user.userName);
   }, []);
   const onUpdate = (e) => {
     e.preventDefault();
@@ -32,6 +34,18 @@ const Profil = () => {
         {showForm && (
           <div className="showForm-box">
             <form onSubmit={onUpdate}>
+              <div className="input-wrapper">
+                <label className="names-label" htmlFor="userName">
+                  Username
+                </label>
+                <input
+                  type="text"
+                  id="userName"
+                  disabled
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                />
+              </div>
               <div className="input-wrapper">
                 <label className="names-label" htmlFor="firstName">
                   Firstname

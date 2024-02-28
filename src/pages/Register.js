@@ -11,15 +11,20 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [userName, setUserName] = useState("");
 
   const onRegister = (e) => {
     e.preventDefault();
-    const body = { email, password, firstName, lastName };
+    if (!email | !password | !firstName | !lastName | !userName) {
+      return alert("Veuillez remplir tout les champs du formulaire");
+    }
+    const body = { email, password, firstName, lastName, userName };
     const clearForm = () => {
       setEmail("");
       setPassword("");
       setFirstName("");
       setLastName("");
+      setUserName("");
     };
     registerUser(body, clearForm, dispatch);
   };
@@ -36,6 +41,15 @@ const Register = () => {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="input-wrapper">
+            <label htmlFor="userName">Username</label>
+            <input
+              type="text"
+              id="userName"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
             />
           </div>
           <div className="input-wrapper">

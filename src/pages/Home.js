@@ -9,7 +9,6 @@ const Home = () => {
   return (
     <div className="main-content">
       <div className="home-banner">
-        <img alt="tree" src={Banktree} />
         <div className="banner-txt-box">
           <p className="big-text">No fees.</p>
           <p className="big-text"> No minimum deposit.</p>

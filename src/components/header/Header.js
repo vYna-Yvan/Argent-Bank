@@ -17,6 +17,7 @@ const Header = () => {
     <header>
       <Link className="link-header" to="/">
         <img className="logo" alt="logo" src={Logo} />
+        <h1 className="logo-title">Argent bank</h1>
       </Link>
 
       <Link to={token ? "/profil" : "/login"}>
@@ -31,13 +32,13 @@ const Header = () => {
               : "Sign In"}
           </p>
           {token ? (
-            <button onClick={handleSignOut}>
+            <button className="sign-out" onClick={handleSignOut}>
               {" "}
               <img src={outIcon} />
               Sign Out
             </button>
           ) : (
-            <Link to="/login">Sign In</Link>
+            <Link to="/login"></Link>
           )}
         </div>
       </Link>

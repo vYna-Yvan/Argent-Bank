@@ -99,3 +99,5 @@
     color: #fff;
     margin-bottom: 3px;
 }
+
+@media screen and (max-width: 769px) {}

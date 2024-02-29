@@ -16,14 +16,26 @@ header {
     padding: 5px 20px;
 }
 
-.link-header {
-    height: 55px;
-}
+
+
 
 .logo {
-    height: -webkit-fill-available;
-    ;
+    max-width: 100%;
+    width: 200px;
 }
+
+
+.logo-title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
 
 .SignIn-box {
     display: flex;
@@ -41,4 +53,18 @@ header {
     color: #2c3e50;
     font-weight: bold;
 
+}
+
+.sign-out {
+    display: flex;
+    align-items: center;
+
+    font-size: 1rem;
+    background: unset;
+    border: unset;
+    text-align: center;
+    height: 30px;
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
 }

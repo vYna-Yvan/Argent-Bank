@@ -34,7 +34,7 @@ const Header = () => {
           {token ? (
             <button className="sign-out" onClick={handleSignOut}>
               {" "}
-              <img src={outIcon} />
+              <img alt="out" src={outIcon} />
               Sign Out
             </button>
           ) : (

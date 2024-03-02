@@ -15,7 +15,7 @@ const Profil = () => {
     setFirstName(user.firstName);
     setLastName(user.lastName);
     setUserName(user.userName);
-  }, [user.firstName, user.lastName, user.userName]);
+  }, []);
   const onUpdate = (e) => {
     e.preventDefault();
     const body = { lastName, firstName };

@@ -6,14 +6,14 @@ import {
   LOGIN_USER_FAILED,
   LOGIN_USER_REQUEST,
   LOGOUT_USER,
-  REGISTER_USER_FAILED,
-  REGISTER_USER_REQUEST,
-  REGISTER_USER_SUCCESS,
+  //REGISTER_USER_FAILED,
+  //REGISTER_USER_REQUEST,
+  //REGISTER_USER_SUCCESS,
   UPDATE_USER_FAILED,
   UPDATE_USER_REQUEST,
 } from "../types/userTypes";
 
-export const loginUser = (body, dispatch) => {
+export const loginUser = (body, setError, dispatch) => {
   dispatch({
     type: LOGIN_USER_REQUEST,
   });
@@ -31,12 +31,16 @@ export const loginUser = (body, dispatch) => {
     })
     .then((data) => {
       const token = data?.body?.token;
-      console.log("Réponse api", token);
+
       if (!token) {
+        setError("E-mail ou mot de passe invalide. Veuillez réessayer.");
         return dispatch({ type: LOGIN_USER_FAILED });
       } else {
         getProfile(token, dispatch);
       }
+    })
+    .catch(() => {
+      setError("E-mail ou mot de passe invalide. Veuillez réessayer.");
     });
 };
 
@@ -53,20 +57,15 @@ export const getProfile = (token, dispatch) => {
   })
     .then((response) => {
       if (!response.ok) {
-        console.log(3);
         return dispatch({ type: GET_PROFILE_FAILED });
       } else {
-        console.log(4);
         return response.json();
       }
     })
     .then((data) => {
-      console.log(data);
       if (!data?.body) {
-        console.log(1);
         return dispatch({ type: GET_PROFILE_FAILED });
       } else {
-        console.log(2);
         dispatch({
           type: GET_PROFILE_SUCCESS,
           payload: {
@@ -91,7 +90,6 @@ export const registerUser = (body, clearForm) => {
     body: JSON.stringify(body),
   }).then((response) => {
     if (!response.ok) {
-      console.log("user register failed");
     } else {
       alert("user registered");
       clearForm();
@@ -103,6 +101,7 @@ export const updateUser = (token, body, dispatch) => {
   dispatch({
     type: UPDATE_USER_REQUEST,
   });
+  console.log(body);
   fetch(GET_PROFILE_URL, {
     method: "PUT",
     headers: {

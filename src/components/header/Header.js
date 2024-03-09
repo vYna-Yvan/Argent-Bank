@@ -19,29 +19,30 @@ const Header = () => {
         <img className="logo" alt="logo" src={Logo} />
         <h1 className="logo-title">Argent bank</h1>
       </Link>
+      <div className="nav-bloc">
+        <Link to={token ? "/profil" : "/login"}>
+          <div className="SignIn-box">
+            <img alt="user" src={userIcon} />
 
-      <Link to={token ? "/profil" : "/login"}>
-        <div className="SignIn-box">
-          <img alt="user" src={userIcon} />
-
-          <p>
-            {token
-              ? user.userName
+            <p>
+              {token
                 ? user.userName
-                : user.firstName
-              : "Sign In"}
-          </p>
-          {token ? (
-            <button className="sign-out" onClick={handleSignOut}>
-              {" "}
-              <img alt="out" src={outIcon} />
-              Sign Out
-            </button>
-          ) : (
-            <Link to="/login"></Link>
-          )}
-        </div>
-      </Link>
+                  ? user.userName
+                  : user.firstName
+                : "Sign In"}
+            </p>
+          </div>
+        </Link>
+        {token ? (
+          <button className="sign-out" onClick={handleSignOut}>
+            {" "}
+            <img className="logout-icon" alt="out" src={outIcon} />
+            Sign Out
+          </button>
+        ) : (
+          <Link to="/login"></Link>
+        )}
+      </div>
     </header>
   );
 };

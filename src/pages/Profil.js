@@ -15,10 +15,10 @@ const Profil = () => {
     setFirstName(user.firstName);
     setLastName(user.lastName);
     setUserName(user.userName);
-  }, []);
+  }, [user.firstName, user.lastName, user.userName]);
   const onUpdate = (e) => {
     e.preventDefault();
-    const body = { lastName, firstName };
+    const body = { userName, lastName, firstName };
     updateUser(token, body, dispatch);
   };
   const toggleForm = () => {
@@ -41,7 +41,6 @@ const Profil = () => {
                 <input
                   type="text"
                   id="userName"
-                  disabled
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
                 />
@@ -53,6 +52,7 @@ const Profil = () => {
                 <input
                   type="text"
                   id="firstName"
+                  disabled
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                 />
@@ -64,6 +64,7 @@ const Profil = () => {
                 <input
                   type="text"
                   id="lastName"
+                  disabled
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                 />

@@ -12,27 +12,26 @@ import Login from "../pages/Login.js";
 import Profil from "../pages/Profil.js";
 import { clearLoading, getProfile } from "../redux/actions/userActions.js";
 import { useDispatch, useSelector } from "react-redux";
-import { CLEAR_LOADING } from "../redux/types/userTypes.js";
-import Register from "../pages/Register.js";
 
-// import Footer from "../components/Footer.js.js";
+import Register from "../pages/Register.js";
 
 function Navigation() {
   const dispatch = useDispatch();
-  const { token, userLoading } = useSelector((state) => state.userReducer);
-  console.log(token);
+  const { token, appLoading } = useSelector((state) => state.userReducer);
+
   useEffect(() => {
+    const getTokenFromStrorage = async () => {
+      const token = await localStorage.getItem("token");
+      if (token) {
+        getProfile(token, dispatch);
+      } else {
+        clearLoading(dispatch);
+      }
+    };
     getTokenFromStrorage();
-  }, []);
-  const getTokenFromStrorage = async () => {
-    const token = await localStorage.getItem("token");
-    if (token) {
-      getProfile(token, dispatch);
-    } else {
-      clearLoading(dispatch);
-    }
-  };
-  return userLoading ? (
+  }, [dispatch]);
+
+  return appLoading ? (
     <div>Loading...</div>
   ) : (
     <Router>
@@ -53,8 +52,8 @@ function Navigation() {
             element={token ? <Profil /> : <Navigate to="/login" />}
           />
         </Routes>
-        <Footer />
       </main>
+      <Footer />
     </Router>
   );
 }

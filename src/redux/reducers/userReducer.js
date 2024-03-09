@@ -12,7 +12,8 @@ import {
 const initialeState = {
   token: null,
   user: null,
-  userLoading: true,
+  userLoading: false,
+  appLoading: true,
 };
 
 const userReducer = (state = initialeState, action) => {
@@ -35,6 +36,7 @@ const userReducer = (state = initialeState, action) => {
         token: null,
         user: null,
         userLoading: false,
+        appLoading: false,
       };
     case GET_PROFILE_REQUEST:
       return {
@@ -48,6 +50,7 @@ const userReducer = (state = initialeState, action) => {
         user: payload.user,
         token: payload.token,
         userLoading: false,
+        appLoading: false,
       };
     case GET_PROFILE_FAILED:
       localStorage.removeItem("token");
@@ -56,11 +59,13 @@ const userReducer = (state = initialeState, action) => {
         token: null,
         user: null,
         userLoading: false,
+        appLoading: false,
       };
     case CLEAR_LOADING:
       return {
         ...state,
         userLoading: false,
+        appLoading: false,
       };
     case LOGOUT_USER:
       localStorage.removeItem("token");

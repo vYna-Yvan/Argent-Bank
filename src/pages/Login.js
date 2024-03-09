@@ -9,20 +9,31 @@ const Login = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const onLogin = (e) => {
+  const onLogin = async (e) => {
     e.preventDefault();
+
+    if (!email || !password) {
+      setError("Veuillez entrer à la fois l'e-mail et le mot de passe.");
+      return;
+    }
+
     const body = { email, password };
-    loginUser(body, dispatch);
+
+    loginUser(body, setError, dispatch);
   };
+
   return (
     <div className="main-container">
       <section className="log-form">
         <img alt="user" src={userIcon} />
-        <h1>Sign In</h1>
+        <h1>Connexion</h1>
         <form onSubmit={onLogin}>
+          {error && <p className="error-message">{error}</p>}{" "}
+          {/* message d'erreur */}
           <div className="input-wrapper">
-            <label htmlFor="email">Username</label>
+            <label htmlFor="email">Nom d'utilisateur</label>
             <input
               type="email"
               id="email"
@@ -31,7 +42,7 @@ const Login = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Mot de passe</label>
             <input
               type="password"
               id="password"
@@ -41,12 +52,12 @@ const Login = () => {
           </div>
           <div className="input-remenber">
             <input type="checkbox" id="remember-me" />
-            <label htmlFor="rememeber-me">Remenber me</label>
+            <label htmlFor="rememeber-me">Se souvenir de moi</label>
           </div>
           <button className="sing-in-button" type="submit">
-            Sing In
+            Se connecter
           </button>
-          <Link to="/register">Create account</Link>
+          <Link to="/register">Créer un compte</Link>
         </form>
       </section>
     </div>

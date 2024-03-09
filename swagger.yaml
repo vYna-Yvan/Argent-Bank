@@ -65,11 +65,6 @@ paths:
         - User Module
       summary: User Profile API
       description: API for fetching a user profile
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
       produces:
         - application/json
       responses:
@@ -89,10 +84,6 @@ paths:
       summary: User Profile API
       description: API for updating a user profile
       parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
         - in: body
           name: body
           description: Update user profile attributes
@@ -103,149 +94,119 @@ paths:
         - application/json
       responses:
         "200":
-          description: User profile retrieved successully
+          description: User profile retrieved successfully
           schema:
             $ref: "#/definitions/ApiResponse"
         "400":
           description: Invalid Fields
         "500":
           description: Internal Server Error
-  /user/transactions:
+  /transactions:
     get:
       security:
         - Bearer: []
       tags:
-        - Transactions
-      summary: Get Transactions
-      description: Retrieve a list of transactions
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
+        - Transactions Module
+      summary: Transactions API
+      description: API For fetching transactions
       produces:
         - application/json
       responses:
         "200":
-          description: Transactions retrieved successully
+          description: All transactions retrieved successfully
           schema:
-            $ref: "#/definitions/ApiResponse"
+            $ref: "#/definitions/GetTransaction"
         "400":
-          description: Invalid Fields
+          description: Invalid
+        "401":
+          description: Authentification error
         "500":
-          description: Internal Server Error
+          description: Unauthorized
+  /transaction/{id}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions Module
+      summary: Transactions by id API
+      description: get transaction by id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          description: The ID of the transaction to return
+      responses:
+        "200":
+          description: Get transaction by id successful
+          schema:
+            $ref: "#/definitions/GetTransactionById"
+        "400":
+          description: Invalid
+        "401":
+          description: Authentification error
+        "500":
+          description: Unauthorized
+  /transaction/{id}/info:
     post:
       security:
         - Bearer: []
       tags:
-        - Transactions
-      summary: Add New Transaction
-      description: Add a new transaction
-      parameters:
-        - in: header
-          name: Authorization
-          description: Transaction object to be added
-          type:
-          required: true
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: Transaction added successfully
-          schema:
-            $ref: "#/definitions/Transaction"
-        "400":
-          description: Invalid Fields
-        "500":
-          description: Internal Server Error
-  /user/transactions/{id}:
-    get:
-      security:
-        - Bearer: []
-      tags:
-        - Transactions
-      summary: Get Transaction by ID
-      description: Retrieve a transaction by its ID
+        - Transactions Module
+      summary: Transactions information by id  API
+      description: post  transaction informations
       parameters:
         - in: path
           name: id
-          description: Transaction ID
           required: true
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: Transaction retrieved successfully
-          schema:
-            $ref: "#/definitions/Transaction"
-        "400":
-          description: Transaction not found
-        "500":
-          description: Internal Server Error
-    put:
-      security:
-        - Bearer: []
-      tags:
-        - Transactions
-      summary: Update Transaction by ID
-      description: Update a transaction by its ID
-      parameters:
-        - in: path
-          name: id
-          description: Transaction ID
-          required: true
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
+          type: integer
+          description: The ID of the transaction to post a note in
         - in: body
-          name: body
-          description: Update transaction attributes
+          name: Informations
           required: true
           schema:
-            $ref: "#/definitions/Transaction"
-      produces:
-        - application/json
+            $ref: "#/definitions/Info"
       responses:
         "200":
-          description: Updated Transaction object
+          description: Note successfully created
           schema:
-            $ref: "#/definitions/Transaction"
+            $ref: "#/definitions/InfoSuccess"
         "400":
-          description: Transaction not found
+          description: Invalid
+        "401":
+          description: Authentification error
         "500":
-          description: Internal Server Error
-    delete:
+          description: Unauthorized
+    patch:
       security:
         - Bearer: []
       tags:
-        - Transactions
-      summary: Delete Transaction by ID
-      description: Delete a transaction by its ID
+        - Transactions Module
+      summary: Transactions information by id  API
+      description: change  a transaction Info
       parameters:
         - in: path
           name: id
-          description: Transaction ID
           required: true
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
+          type: integer
+          description: The ID of the transaction to change a note
+        - in: body
+          name: Informations
           required: true
-      produces:
-        - application/json
+          schema:
+            $ref: "#/definitions/Info"
       responses:
         "200":
-          description: Transaction deleted successfully
+          description: Note successfully changed
           schema:
-            $ref: "#/definitions/ApiResponse"
+            $ref: "#/definitions/InfoSuccess"
         "400":
-          description: Transaction not found
+          description: Invalid
+        "401":
+          description: Authentification error
         "500":
-          description: Internal Server Error
+          description: Unauthorized
+
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -266,6 +227,9 @@ definitions:
       lastName:
         type: string
         description: user last name
+      userName:
+        type: string
+        description: user public name
   Login:
     properties:
       email:
@@ -296,21 +260,55 @@ definitions:
   UserProfile:
     type: object
     properties:
-      firstName:
+      userName:
         type: string
-      lastName:
-        type: string
-  Transaction:
+  GetTransaction:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        date:
+          type: string
+        description:
+          type: string
+        amount:
+          type: integer
+  GetCategories:
+    type: array
+    items:
+      type: object
+      properties:
+        category:
+          type: string
+  GetTransactionById:
+    type: object
     properties:
       date:
         type: string
-        description: transaction date
       description:
         type: string
-        description: transcation description
       amount:
-        type: number
-        description: transactiom amount
+        type: integer
+      info:
+        type: object
+        properties:
+          category:
+            type: string
+          note:
+            type: string
+  Info:
+    type: object
+    properties:
+      note:
+        type: string
       category:
         type: string
-        description: category transcation
+  InfoSuccess:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string

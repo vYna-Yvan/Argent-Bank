@@ -19,6 +19,7 @@ header {
 
 
 
+
 .logo {
     max-width: 100%;
     width: 200px;
@@ -34,6 +35,12 @@ header {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+}
+
+.nav-bloc {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 
@@ -58,7 +65,6 @@ header {
 .sign-out {
     display: flex;
     align-items: center;
-
     font-size: 1rem;
     background: unset;
     border: unset;
@@ -67,4 +73,10 @@ header {
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
     cursor: pointer;
+    gap: 10px;
+}
+
+.logout-icon {
+    height: 20px;
+    width: 20px;
 }

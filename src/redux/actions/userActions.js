@@ -101,7 +101,7 @@ export const updateUser = (token, body, dispatch) => {
   dispatch({
     type: UPDATE_USER_REQUEST,
   });
-  console.log(body);
+
   fetch(GET_PROFILE_URL, {
     method: "PUT",
     headers: {

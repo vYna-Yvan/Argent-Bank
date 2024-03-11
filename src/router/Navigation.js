@@ -41,7 +41,7 @@ function Navigation() {
           <Route path="/" element={<Home />} />
           <Route
             path="/Login"
-            element={token ? <Navigate to="/" /> : <Login />}
+            element={token ? <Navigate to="/Profil" /> : <Login />}
           />
           <Route
             path="/Register"

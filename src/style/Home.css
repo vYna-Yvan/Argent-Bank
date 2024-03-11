@@ -1,93 +1,13 @@
 @import './root.css';
 
-.home-banner {
-    position: relative;
-    height: 400px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 0 -50px;
-}
-
-.home-banner {
-    background-image: url(../assets/img/bank-tree.jpeg);
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 400px;
-    position: relative;
-}
-
-.banner-txt-box {
-    color: var(--text-color);
-    position: absolute;
-    width: 350px;
-    margin: 2rem;
-    padding: 32px;
-    background-color: #fff;
-    top: 2rem;
-    right: 50px;
-
-}
-
-.big-text {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0;
-
-}
-
-.lil-text {
-    margin: 0;
-    margin-top: 19px;
-}
-
-.abouts-box {
+.item-list {
     display: flex;
     flex-direction: row;
 }
 
-
-
-.about img {
-    width: 100px;
-    border: 10px solid #00bc77;
-    border-radius: 80px;
-    padding: 16px;
-}
-
-.about h2 {
-
-    color: #222;
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
 @media screen and (max-width: 769px) {
-    .abouts-box {
+    .item-list {
         flex-direction: column;
     }
 
-    .home-banner {
-
-        background-position: 0% 33%;
-    }
-
-    .banner-txt-box {
-
-        top: 2rem;
-        width: 50%;
-        background: white;
-        text-align: left;
-        margin: 0;
-
-    }
-
-    .big-text {
-        font-size: 1rem;
-    }
-
-    .lil-text {
-        font-size: 0.9rem;
-    }
 }

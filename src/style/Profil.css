@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     background-color: #12002b;
-    height: 87vh;
+    min-height: 100vh;
 }
 
 .title-edit {

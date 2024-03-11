@@ -3,7 +3,7 @@ import userIcon from "../assets/icon/circle-user-solid.svg";
 import "../style/Login.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginUser, registerUser } from "../redux/actions/userActions";
+import { registerUser } from "../redux/actions/userActions";
 
 const Register = () => {
   const dispatch = useDispatch();

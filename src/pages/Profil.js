@@ -79,26 +79,25 @@ const Profil = () => {
           Edit Name
         </button>
       </div>
-      <div className="bank-accounts">
-        <Account
-          accountType="Checking"
-          accountNumber="(x3448)"
-          accountAmount="$48.098.43"
-          accountDescription="Available Balance"
-        />
-        <Account
-          accountType="Savings"
-          accountNumber="(x6712)"
-          accountAmount="$10,928.42"
-          accountDescription="Available Balance"
-        />
-        <Account
-          accountType="Credit"
-          accountNumber="(x8349)"
-          accountAmount="$184.30"
-          accountDescription="Current Balance"
-        />
-      </div>
+
+      <Account
+        accountType="Checking"
+        accountNumber="(x3448)"
+        accountAmount="$48.098.43"
+        accountDescription="Available Balance"
+      />
+      <Account
+        accountType="Savings"
+        accountNumber="(x6712)"
+        accountAmount="$10,928.42"
+        accountDescription="Available Balance"
+      />
+      <Account
+        accountType="Credit"
+        accountNumber="(x8349)"
+        accountAmount="$184.30"
+        accountDescription="Current Balance"
+      />
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import React from "react";
 import "../style/Home.css";
-//import Banktree from "../assets/img/bank-tree.jpeg";
 import Banner from "../components/banner/banner";
 import ItemList from "../components/item/item";
 

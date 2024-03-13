@@ -69,7 +69,7 @@ paths:
         - application/json
       responses:
         "200":
-          description: User profile retrieved successfully
+          description: User profile retrieved successully
           schema:
             $ref: "#/definitions/ApiResponse"
         "400":
@@ -94,14 +94,13 @@ paths:
         - application/json
       responses:
         "200":
-          description: User profile updated successfully
+          description: User profile retrieved successfully
           schema:
             $ref: "#/definitions/ApiResponse"
         "400":
           description: Invalid Fields
         "500":
           description: Internal Server Error
-
   /transactions/{month}:
     get:
       security:
@@ -246,53 +245,22 @@ definitions:
   TransactionsByAccount:
     type: object
     properties:
-      account:
-        type: object
-        properties:
-          transaction:
-            type: array
-            items:
+      accounts:
+        type: array
+        items:
+          type: object
+          properties:
+            account:
               type: object
               properties:
-                id:
+                accountId:
                   type: integer
-                name:
+                  description: The ID of the account
+                accountName:
                   type: string
-                date:
-                  type: string
-                category:
-                  type: string
-                amount:
-                  type: integer
-    additionalProperties: false
-  TransactionDetails:
-    type: object
-    properties:
-      id:
-        type: integer
-      name:
-        type: string
-      date:
-        type: string
-      category:
-        type: string
-      amount:
-        type: integer
-  TransactionInfo:
-    type: object
-    properties:
-      name:
-        type: string
-      category:
-        type: string
-  TransactionInfoSuccess:
-    type: object
-    properties:
-      name:
-        type: string
-      category:
-        type: string
-      status:
-        type: integer
-      message:
-        type: string
+                  description: The name of the account
+                transactions:
+                  type: array
+                  items:
+                    $ref: "#/definitions/TransactionDetails"
+          additionalProperties: false

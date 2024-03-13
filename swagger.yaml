@@ -101,42 +101,30 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
-  /transactions:
+
+  /transactions/{month}:
     get:
       security:
         - Bearer: []
       tags:
         - Transactions Module
-      summary: Transactions API
-      description: API For fetching transactions
+      summary: View all transactions for the current month, grouped by account
+      description: API to view all transactions for the current month, grouped by account
+      parameters:
+        - in: path
+          name: month
+          description: Current month in the format MM-YYYY
+          required: true
+          type: string
       produces:
         - application/json
       responses:
         "200":
-          description: All transactions retrieved successfully
+          description: Transactions for the current month grouped by account retrieved successfully
           schema:
-            $ref: "#/definitions/GetTransaction"
+            $ref: "#/definitions/TransactionsByAccount"
         "400":
-          description: Invalid
-        "401":
-          description: Unauthorized
-        "500":
-          description: Internal Server Error
-  /transactions/category:
-    get:
-      tags:
-        - Transactions Module
-      summary: Transactions categories API
-      description: API to get all the transaction categories
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: All categories retrieved successfully
-          schema:
-            $ref: "#/definitions/GetCategories"
-        "400":
-          description: Invalid
+          description: Invalid request
         "401":
           description: Unauthorized
         "500":
@@ -147,21 +135,23 @@ paths:
         - Bearer: []
       tags:
         - Transactions Module
-      summary: Transactions by id API
-      description: get transaction by id
+      summary: View details of a transaction
+      description: API to view details of a specific transaction
       parameters:
         - in: path
           name: id
+          description: The ID of the transaction to retrieve
           required: true
           type: integer
-          description: The ID of the transaction to return
+      produces:
+        - application/json
       responses:
         "200":
-          description: Get transaction by id successful
+          description: Transaction details retrieved successfully
           schema:
-            $ref: "#/definitions/GetTransactionById"
+            $ref: "#/definitions/TransactionDetails"
         "400":
-          description: Invalid
+          description: Invalid request
         "401":
           description: Unauthorized
         "500":
@@ -171,31 +161,33 @@ paths:
         - Bearer: []
       tags:
         - Transactions Module
-      summary: Transactions information by id  API
-      description: change  a transaction Info
+      summary: Modify information about a transaction
+      description: API to modify information about a specific transaction
       parameters:
         - in: path
           name: id
+          description: The ID of the transaction to modify
           required: true
           type: integer
-          description: The ID of the transaction to change a note
         - in: body
-          name: Informations
+          name: Information
+          description: New information of the transaction to update
           required: true
           schema:
-            $ref: "#/definitions/Info"
+            $ref: "#/definitions/TransactionInfo"
+      produces:
+        - application/json
       responses:
         "200":
-          description: Note successfully changed
+          description: Transaction information updated successfully
           schema:
-            $ref: "#/definitions/InfoSuccess"
+            $ref: "#/definitions/TransactionInfoSuccess"
         "400":
-          description: Invalid
+          description: Invalid request
         "401":
           description: Unauthorized
         "500":
           description: Internal Server Error
-
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -251,29 +243,17 @@ definitions:
     properties:
       userName:
         type: string
-  GetTransaction:
-    type: array
-    items:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        date:
-          type: string
-        amount:
-          type: integer
-  GetCategories:
-    type: array
-    items:
-      type: object
-      properties:
-        category:
-          type: string
-  GetTransactionById:
+  TransactionsByAccount:
+    type: object
+    additionalProperties:
+      type: array
+      items:
+        $ref: "#/definitions/TransactionsByAccount"
+  TransactionDetails:
     type: object
     properties:
+      id:
+        type: integer
       name:
         type: string
       date:
@@ -282,21 +262,14 @@ definitions:
         type: string
       amount:
         type: integer
-      info:
-        type: object
-        properties:
-          account:
-            type: string
-          description:
-            type: string
-  Info:
+  TransactionInfo:
     type: object
     properties:
       name:
         type: string
       category:
         type: string
-  InfoSuccess:
+  TransactionInfoSuccess:
     type: object
     properties:
       name:

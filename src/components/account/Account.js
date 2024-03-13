@@ -23,4 +23,39 @@ const Account = ({
   );
 };
 
-export default Account;
+const accountData = [
+  {
+    accountType: "Checking",
+    accountNumber: "(x3448)",
+    accountAmount: "$48.098.43",
+    accountDescription: "Available Balance",
+  },
+  {
+    accountType: "Savings",
+    accountNumber: "(x6712)",
+    accountAmount: "$10,928.42",
+    accountDescription: "Available Balance",
+  },
+  {
+    accountType: "Credit",
+    accountNumber: "(x8349)",
+    accountAmount: "$184.30",
+    accountDescription: "Current Balance",
+  },
+];
+
+const AccountList = () => (
+  <div className="account-list">
+    {accountData.map((account, index) => (
+      <Account
+        key={index}
+        accountType={account.accountType}
+        accountNumber={account.accountNumber}
+        accountAmount={account.accountAmount}
+        accountDescription={account.accountDescription}
+      />
+    ))}
+  </div>
+);
+
+export default AccountList;

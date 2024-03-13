@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../style/Profil.css";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../redux/actions/userActions";
-import Account from "../components/account/Account.js";
+import AccountList from "../components/account/Account.js";
 
 const Profil = () => {
   const dispatch = useDispatch();
@@ -79,25 +79,7 @@ const Profil = () => {
           Edit Name
         </button>
       </div>
-
-      <Account
-        accountType="Checking"
-        accountNumber="(x3448)"
-        accountAmount="$48.098.43"
-        accountDescription="Available Balance"
-      />
-      <Account
-        accountType="Savings"
-        accountNumber="(x6712)"
-        accountAmount="$10,928.42"
-        accountDescription="Available Balance"
-      />
-      <Account
-        accountType="Credit"
-        accountNumber="(x8349)"
-        accountAmount="$184.30"
-        accountDescription="Current Balance"
-      />
+      <AccountList />
     </div>
   );
 };

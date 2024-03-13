@@ -79,6 +79,7 @@ const Profil = () => {
           Edit Name
         </button>
       </div>
+
       <AccountList />
     </div>
   );

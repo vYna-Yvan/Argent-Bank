@@ -33,7 +33,7 @@ const Login = () => {
           {error && <p className="error-message">{error}</p>}{" "}
           {/* message d'erreur */}
           <div className="input-wrapper">
-            <label htmlFor="email">Nom d'utilisateur</label>
+            <label htmlFor="email">E-mail</label>
             <input
               type="email"
               id="email"
